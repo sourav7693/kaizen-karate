@@ -1,0 +1,139 @@
+// import { ServiceData } from "@/lib/ServiceData";
+import Image from "next/image";
+import Link from "next/link";
+import { FaMobile, FaWhatsapp } from "react-icons/fa";
+import { IoLocationSharp } from "react-icons/io5";
+import { MdDone } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+
+const Footer = () => {
+  const links = [
+    {
+      heading: "Quick Links",
+      details: [
+        { name: "Home", link: "/" },
+        { name: "About Us", link: "/about" },
+        { name: "Our Classes", link: "/classes" },
+        { name: "Media", link: "/media" },        
+        { name: "Contact Us", link: "/contact" },
+      ],
+    },    
+  ];
+  return (
+    <footer className="self-padding border-t-4 flex flex-col relative bg-defined-purple text-white">
+      <div className=" flex flex-col  lg:flex-row gap-12 z-10">
+        <div className=" w-full lg:w-[30%] flex flex-col gap-4">
+          <div>
+            <Image
+              src={"/logo-white.svg"}
+              alt="logo-white"
+              width={1224}
+              height={181}
+              priority
+              className=" h-[2rem] w-fit"
+            />
+          </div>
+          <p className="text-sm text-justify">
+            Kaizen Karate-Do Association is Siliguri's premier karate academy,
+            offering authentic training in Traditional, Sports, and Women's
+            Self-Defense programs. Under expert 9th Dan leadership, we build
+            champions while instilling discipline, confidence, and life skills.
+            Join North Bengal's trusted martial arts community and embark on
+            your journey to physical mastery and mental strength in a
+            supportive, professional environment.
+          </p>
+        </div>
+        <div className=" w-full lg:w-[70%] grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {links.map((item, index) => (
+            <div className=" flex flex-col gap-4" key={index}>
+              <h1 className=" lg:text-xl text-2xl xlg:text-2xl font-semibold ">
+                {item.heading}
+              </h1>
+              <div className=" flex flex-col gap-4">
+                {item.details.map((item, index) => (
+                  <Link
+                    href={item.link}
+                    key={index}
+                    className="hover:scale-105 transition-all duration-500 flex items-center gap-1"
+                  >
+                    <MdDone className="text-defined-yellow size-5" />{" "}
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div className="flex flex-col gap-4 w-full">
+            <h1 className=" lg:text-xl text-2xl xlg:text-2xl font-semibold text-white">
+              Contact Information
+            </h1>
+            <div className=" flex flex-col gap-2  lg:text-sm text-lg xlg:text-lg ">
+              <div className="flex gap-2">
+                <FaWhatsapp size={20} className=" text-defined-yellow" />{" "}
+                <Link href={"https://wa.me/919832480087"}>+91 98324 80087</Link>
+                {""}
+              </div>
+              <div className="flex gap-2">
+                <FaMobile size={20} className=" text-defined-yellow" />{" "}
+                <Link target="_blank" href={"tel:+919832480087"}>
+                  +91 98324 80087
+                </Link>{" "}
+              </div>
+              <Link
+                href={"mailto:kaizenkarateindia@gmail.com"}
+                target="_blank"
+                className="flex gap-2"
+              >
+                <MdEmail size={20} className=" text-defined-yellow" />{" "}
+                <span>kaizenkarateindia@gmail.com</span>
+              </Link>
+              <Link href={"/"} className="flex gap-2 w-full " target="_blank">
+                <IoLocationSharp
+                  size={20}
+                  className=" text-defined-yellow shrink-0"
+                />{" "}
+                <span>
+                  Udham Singh Sarani Rd, Ward 13, Punjabi Para, Siliguri, West
+                  Bengal 734001
+                </span>
+              </Link>
+            </div>
+          </div>          
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.617996808444!2d88.42971107543298!3d26.72464817675975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4416766abb097%3A0xb5110a2096f10a73!2sKAIZEN%20KARATE-DO%20ASSOCIATION%20INDIA!5e0!3m2!1sen!2sin!4v1759733671418!5m2!1sen!2sin"
+            loading="lazy"
+            className="w-full h-[14rem] rounded-xl"
+          ></iframe>
+        </div>
+      </div>
+
+      <div className=" pt-6 flex lg:flex-row flex-col justify-between items-center  border-t  z-10">
+        <div className="text-center font-bold text-xs md:text-base">
+          <h1>
+            ©{" "}
+            <Link href={"/"} className=" text-white ">
+              {" "}
+              Kaizen Karate - Do Association India - 2025 |
+            </Link>{" "}
+            {/* <br /> */}All Rights Reserved
+          </h1>
+        </div>
+        <div className="flex text-sm md:text-base justify-center items-center gap-2">
+          <h1>Developed By </h1>
+          <Link href={"https://rebootai.in/"} target="_blank">
+            <Image
+              src="/reboots.svg"
+              alt="reboot-logo"
+              width={100}
+              height={100}
+              className="h-[0.8rem] md:h-[1rem] w-fit"
+            />
+          </Link>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
