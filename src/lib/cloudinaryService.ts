@@ -20,8 +20,8 @@ export const uploadFile = async (
   tempFilePath: string,  
 ): Promise<UploadFileResult | Error> => {
   try {
-    let format = "jpg";
-    let resourceType: "image" | "video" | "raw" | "auto" = "image";
+    const format = "jpg";
+    const resourceType: "image" | "video" | "raw" | "auto" = "image";
 
     const result: UploadFileResult = await cloudinary.uploader.upload(
       tempFilePath,

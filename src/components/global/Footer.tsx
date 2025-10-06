@@ -43,11 +43,11 @@ const Footer = () => {
             />
           </div>
           <p className="text-sm text-justify">
-            Kaizen Karate-Do Association is Siliguri's premier karate academy,
-            offering authentic training in Traditional, Sports, and Women's
+            Kaizen Karate-Do Association is Siliguri&apos;s premier karate academy,
+            offering authentic training in Traditional, Sports, and Women&apos;s
             Self-Defense programs. Under expert 9th Dan leadership, we build
             champions while instilling discipline, confidence, and life skills.
-            Join North Bengal's trusted martial arts community and embark on
+            Join North Bengal&apos;s trusted martial arts community and embark on
             your journey to physical mastery and mental strength in a
             supportive, professional environment.
           </p>

@@ -47,7 +47,7 @@ const AboutSection1 = () => {
         ref={leftSideRef}
       >
         <h1 className="text-2xl font-bold text-defined-purple">
-          Siliguri's Leading Karate Academy: 15 Years of Goju-Ryu Excellence
+          Siliguri&apos;s Leading Karate Academy: 15 Years of Goju-Ryu Excellence
         </h1>
 
         <p className="text-defined-brown text-justify">
@@ -64,8 +64,8 @@ const AboutSection1 = () => {
           competitive Sports Karate led by our KAI-certified national coaches,
           and essential Self Defence for Women and students. We believe training
           is about more than physical skill; it is about teaching respect,
-          discipline, focus, and fostering the essential attitude of "Never Give
-          Up." If you are looking for a highly accomplished and certified Karate
+          discipline, focus, and fostering the essential attitude of &apos;Never Give
+          Up.&apos; If you are looking for a highly accomplished and certified Karate
           Academy in North Bengal to build confidence, athleticism, and life
           skills, join KKA. Our champions prove that we prepare every student
           for success in the dojo and in life.

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { FaFacebook, FaGoogle, FaInstagram, FaYoutube } from "react-icons/fa";
-import { FaPhoneVolume, FaWhatsapp } from "react-icons/fa6";
+import { FaPhoneVolume } from "react-icons/fa6";
 
 const TopHeader = () => {
   return (

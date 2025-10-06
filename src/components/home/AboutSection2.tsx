@@ -62,10 +62,10 @@ const AboutSection2 = () => {
       >
         <p className="text-justify text-defined-purple">
           Choose Kaizen Karate-Do for expert 9th Dan instruction, proven
-          champion development, and holistic growth. As Siliguri's premier
+          champion development, and holistic growth. As Siliguri&apos;s premier
           karate academy, we offer authentic training in Traditional Karate,
-          Sports Karate, and Women's Self-Defense. Our supportive community and
-          international-standard facilities make us North Bengal's trusted
+          Sports Karate, and Women&apos;s Self-Defense. Our supportive community and
+          international-standard facilities make us North Bengal&apos;s trusted
           choice for developing discipline, confidence, and lifelong martial
           arts excellence.
         </p>
