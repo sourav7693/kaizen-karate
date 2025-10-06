@@ -1,7 +1,7 @@
 import mongoose, { Model } from "mongoose";
 
 export interface GalleryDocument extends mongoose.Document {
-  gallerId: string;
+  galleryId: string;
   name: string;
   gallery_image: {
     public_id: string;
@@ -14,7 +14,7 @@ export interface GalleryDocument extends mongoose.Document {
 
 const gallerySchema = new mongoose.Schema<GalleryDocument>(
   {
-    gallerId: {
+    galleryId: {
       type: String,
       unique: true,
       required: true,
@@ -41,3 +41,14 @@ const Gallery: Model<GalleryDocument> =
   mongoose.model<GalleryDocument>("Gallery", gallerySchema);
 
 export default Gallery;
+
+export type GalleryResponse = {
+  success: boolean;
+  data: GalleryDocument[];
+  pagination: {
+    totalCount: number;
+    currentPage: number;
+    limit: number;
+    totalPages: number;
+  };
+};

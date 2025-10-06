@@ -1,14 +1,44 @@
-import SubBanner from '@/components/global/SubBanner';
-import MainTemplate from '@/templates/MainTemplate'
-import React from 'react'
+import { getAllGallery } from "@/actions/gallery";
+import SubBanner from "@/components/global/SubBanner";
+import { GalleryDocument } from "@/models/Gallery";
+import MainTemplate from "@/templates/MainTemplate";
+import Image from "next/image";
+import React from "react";
 
-const page = () => {
+const page = async () => {
+  const gallery = await getAllGallery(1,0);
   return (
     <MainTemplate>
-      <SubBanner heading="Meida" />
+      <SubBanner heading="Media" />
       {/* Your Work here  */}
+      <section className="self-padding">
+        <div className="border-b border-defined-purple pb-8 flex flex-col gap-6">
+          <h1 className="text-3xl font-bold text-defined-purple">
+            Image Gallery
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+            {gallery.data.map((item: GalleryDocument) => (
+              <div key={item.galleryId}>
+                <Image
+                  src={item.gallery_image.secure_url}
+                  alt={item.name}
+                  width={500}
+                  height={500}
+                  className="w-full h-64 object-cover rounded-lg shadow-md"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="pb-8 flex flex-col gap-6">
+          {/* Video Gallery */}
+          <h1 className="text-3xl font-bold text-defined-purple">
+            Video Gallery
+          </h1>
+        </div>
+      </section>
     </MainTemplate>
   );
-}
+};
 
-export default page
+export default page;

@@ -20,17 +20,26 @@ const Footer = () => {
     },    
   ];
   return (
-    <footer className="self-padding border-t-4 flex flex-col relative bg-defined-purple text-white">
+    <footer className="self-padding border-t-4 flex flex-col relative text-white">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/footerbg.jpg"
+          alt="footer"
+          width={500}
+          height={500}
+          className="w-full h-full object-cover"
+        />
+      </div>
       <div className=" flex flex-col  lg:flex-row gap-12 z-10">
         <div className=" w-full lg:w-[30%] flex flex-col gap-4">
-          <div>
+          <div className="flex justify-center">
             <Image
-              src={"/logo-white.svg"}
+              src={"/logo.png"}
               alt="logo-white"
               width={1224}
               height={181}
               priority
-              className=" h-[2rem] w-fit"
+              className=" size-[4rem]"
             />
           </div>
           <p className="text-sm text-justify">
@@ -88,7 +97,7 @@ const Footer = () => {
                 <MdEmail size={20} className=" text-defined-yellow" />{" "}
                 <span>kaizenkarateindia@gmail.com</span>
               </Link>
-              <Link href={"/"} className="flex gap-2 w-full " target="_blank">
+              <Link href={"https://maps.app.goo.gl/HEwGqv7P5KVNN2Dz6"} className="flex gap-2 w-full " target="_blank">
                 <IoLocationSharp
                   size={20}
                   className=" text-defined-yellow shrink-0"
@@ -99,7 +108,7 @@ const Footer = () => {
                 </span>
               </Link>
             </div>
-          </div>          
+          </div>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.617996808444!2d88.42971107543298!3d26.72464817675975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4416766abb097%3A0xb5110a2096f10a73!2sKAIZEN%20KARATE-DO%20ASSOCIATION%20INDIA!5e0!3m2!1sen!2sin!4v1759733671418!5m2!1sen!2sin"
             loading="lazy"
@@ -123,7 +132,7 @@ const Footer = () => {
           <h1>Developed By </h1>
           <Link href={"https://rebootai.in/"} target="_blank">
             <Image
-              src="/reboots.svg"
+              src="/svgs/reboots.svg"
               alt="reboot-logo"
               width={100}
               height={100}

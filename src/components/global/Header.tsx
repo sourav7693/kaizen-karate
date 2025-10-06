@@ -5,12 +5,17 @@ import Image from "next/image";
 import { IoCloseSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 import { AiOutlineMenuFold } from "react-icons/ai";
+import AppointmentModal from "./AppointmentModal";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+
+  const toggleAppointmentModal = () =>
+    setIsAppointmentModalOpen(!isAppointmentModalOpen);
   const NavLinksData = [
     {
       text: "Home",
@@ -78,14 +83,14 @@ const Header = () => {
       >
         {/* Logo */}
 
-        <Link href={"/"} className="border">
+        <Link href={"/"} className="">
           <Image
-            src={"/logo.svg"}
+            src={"/logo.png"}
             alt="logo"
             width={1224}
             height={181}
             priority
-            className="w-[13rem] md:w-[15rem] border"
+            className="w-[3rem] md:w-[4rem]"
           />
         </Link>
 
@@ -148,7 +153,7 @@ const Header = () => {
           ))}
         </ul>
         {/* Desktop button */}
-        <button className="hidden lg:block rounded-3xl text-white bg-defined-purple h-[2.5rem] px-4">
+        <button onClick={toggleAppointmentModal} className="hidden lg:block rounded-3xl text-white bg-defined-purple h-[2.5rem] px-4">
           Admission Today
         </button>
 
@@ -262,7 +267,7 @@ const Header = () => {
                           } overflow-hidden flex flex-col rounded`}
                         >
                           {item.subMenu && item.subMenu.length > 0 && (
-                            <ul className="flex flex-col ">
+                            <ul className="flex flex-col">
                               {item.subMenu.map(
                                 (
                                   item: { href: string; text: string },
@@ -294,6 +299,10 @@ const Header = () => {
           </div>
         )}
       </div>
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={toggleAppointmentModal}
+      />
     </>
   );
 };

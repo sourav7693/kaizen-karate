@@ -41,10 +41,19 @@ const AboutSection2 = () => {
 
   return (
     <section className=" relative flex flex-col md:flex-row justify-between gap-4 items-end">
+       <div className="absolute inset-0">
+              <Image
+                src="/images/homepageimage.jpg"
+                alt="footer"
+                width={500}
+                height={500}
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            </div>
       <div
-        className="absolute left-0 bottom-0 w-full bg-defined-yellow rounded-xl"
+        className="absolute left-0 bottom-0 w-full rounded-xl"
         style={{
-          height: isSmallScreen ? "100%" : `${rightSideHeight * 1.1}px`,
+          height: isSmallScreen ? "100%" : `${rightSideHeight}px`,
         }}
       />
       <div

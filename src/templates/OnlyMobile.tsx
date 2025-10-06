@@ -52,7 +52,7 @@ const OnlyMobile = () => {
       >
         <Link
           target="_Blank"
-          href="https://api.whatsapp.com/send?phone=919933437777"
+          href="https://api.whatsapp.com/send?phone=919832480087"
           className="flex flex-col items-center gap-2 text-sm text-defined-purple font-semibold"
         >
           <span className="text-xl">
@@ -79,7 +79,7 @@ const OnlyMobile = () => {
         </button>
 
         <Link
-          href="tel:+919800107777"
+          href="tel:+919832480087"
           target="_Blank"
           className="flex flex-col gap-2 items-center text-sm text-defined-purple font-semibold"
         >

@@ -1,4 +1,5 @@
 import SubBanner from '@/components/global/SubBanner';
+import FormCard from '@/components/ui/FormCard';
 import MainTemplate from '@/templates/MainTemplate'
 import Link from 'next/link';
 import { FaLocationDot } from 'react-icons/fa6';
@@ -86,6 +87,7 @@ const page = () => {
             </div>
           ))}
         </div>
+        <FormCard />
       </section>
     </MainTemplate>
   );
