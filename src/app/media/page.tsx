@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getAllGallery } from "@/actions/gallery";
 import SubBanner from "@/components/global/SubBanner";
 import { GalleryDocument } from "@/models/Gallery";
@@ -18,15 +19,15 @@ const page = async () => {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
             {gallery.data.map((item: GalleryDocument) => (
-              <div key={item.galleryId}>
+              item.status && <div key={item.galleryId}>
                 <Image
                   src={item.gallery_image.secure_url}
                   alt={item.name}
                   width={500}
                   height={500}
-                  className="w-full h-64 object-cover rounded-lg shadow-md"
+                  className="w-full h-full object-cover rounded-lg shadow-md"
                 />
-              </div>
+              </div>            
             ))}
           </div>
         </div>

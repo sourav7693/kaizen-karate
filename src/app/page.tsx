@@ -11,7 +11,7 @@ import TrainingClasses from '@/components/home/TrainingClasses';
 import MainTemplate from '@/templates/MainTemplate'
 
 const page = async() => {
-  const gallery = await getAllGallery(1,10);
+  const gallery = await getAllGallery(1,0);
   return (
     <MainTemplate>
       <HomeSlider />

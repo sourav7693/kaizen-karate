@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 import { GalleryDocument } from "@/models/Gallery";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -47,7 +48,7 @@ const GallerySection = ({ Gallery }: { Gallery: GalleryDocument[] }) => {
               className="w-full flex items-center justify-center"
             >
               {Gallery.map((gallery) => (
-                <SwiperSlide
+                gallery.status && <SwiperSlide
                   key={gallery.galleryId}
                   className="!flex items-center justify-center"
                 >

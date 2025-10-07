@@ -9,7 +9,7 @@ const page = () => {
       photo: "/images/Sensei Puja Oraon.jpg",
       name: "Sensei Puja Oraon",
       district: "Siliguri",
-      designation: "Patron",
+      designation: "Chief Instructor Associate",
     },
     {
       photo: "/images/Sensei Fazr SK.jpg",
