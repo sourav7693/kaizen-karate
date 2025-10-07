@@ -40,7 +40,7 @@ export async function createNewGallery(name: string, gallery_image: File) {
 
     const plainGallery = savedGallery.toObject();
 
-    revalidatePath("/gallery");
+    revalidatePath("/");
 
     return { success: true, data: JSON.parse(JSON.stringify(plainGallery)) };
   } catch (error) {
@@ -67,7 +67,7 @@ export async function deleteExistingGallery(galleryId: string) {
 
     await deleteFile(deletedGallery.gallery_image.public_id);
     await Gallery.findByIdAndDelete(deletedGallery._id);
-    revalidatePath("/gallery");
+    revalidatePath("/");
     return { success: true, message: "Gallery deleted successfully" };
   } catch (error) {
     console.log(error);
@@ -185,7 +185,7 @@ export async function updateGallery(
 
     // Save and revalidate
     const saved = await gallery.save();
-    revalidatePath("/gallery");
+    revalidatePath("/");
 
     return {
       success: true,
