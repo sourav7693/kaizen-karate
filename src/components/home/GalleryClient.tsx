@@ -3,14 +3,24 @@ import Image from "next/image";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { GalleryDocument } from "@/models/Gallery";
-
-import "swiper/css";
+import { useMemo } from "react";
 
 const GalleryClient = ({ Gallery }: { Gallery: GalleryDocument[] }) => {
+  // derive a key — using latest updatedAt or length is enough
+  // for dynamic change of the swiper items when Gallery changes
+  const swiperKey = useMemo(
+    () =>
+      Gallery.map(
+        (g) => `${g.galleryId}-${g.updatedAt ?? g.createdAt ?? ""}`
+      ).join("|"),
+    [Gallery]
+  );
+
   return (
     <section className="flex flex-col gap-4 w-full">
       <div className="py-4 w-full">
         <Swiper
+          key={swiperKey} // reset when Gallery changes
           spaceBetween={20}
           loop={true}
           modules={[Autoplay]}
