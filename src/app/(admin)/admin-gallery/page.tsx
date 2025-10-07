@@ -14,7 +14,7 @@ const page = async ({
     <section>      
       <div className="self-padding">
         <AddToGallery />
-        <GalleryList Gallerys={pageData.data}/>
+        <GalleryList Gallerys={pageData.data} pagination={pageData.pagination}/>
       </div>
     </section>
   );

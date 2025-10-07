@@ -1,7 +1,6 @@
 import SubBanner from '@/components/global/SubBanner';
 import MainTemplate from '@/templates/MainTemplate'
 import Image from 'next/image';
-import React from 'react'
 
 const page = () => {
   const members = [
@@ -12,15 +11,21 @@ const page = () => {
       designation: "Chief Instructor Associate",
     },
     {
+      photo: "/images/Sensei Rajesh Saha.jpeg",
+      name: "Sensei Rajesh Saha",
+      district: "Uttar Dinajpur",
+      designation: "District Incharge",
+    },
+    {
       photo: "/images/Sensei Fazr SK.jpg",
-      name: "Sensei farz SK",
-      district: "Murshidabad Districk",
+      name: "Sensei Farz SK",
+      district: "Murshidabad",
       designation: "Assistance Chief Coach",
     },
     {
       photo: "/images/Sensei Suraj Kumar.jpg",
       name: "Sensei Suraj Kumar",
-      district: "darjelling Districk",
+      district: "Darjeeling",
       designation: "Chief Instructor",
     },
     {

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import toast from "react-hot-toast";
-import { deleteExistingGallery, updateGallery } from "@/actions/gallery";
+import { deleteExistingGallery, getAllGallery, updateGallery } from "@/actions/gallery";
 import { GalleryDocument } from "@/models/Gallery";
 import ToggleInput from "@/components/ui/ToggleInput";
 import Loader from "@/components/ui/Loader";
@@ -12,13 +12,57 @@ import Spinner from "../ui/Spinner";
 import { useRouter } from "next/navigation";
 import { MdEditDocument } from "react-icons/md";
 import { FiTrash2 } from "react-icons/fi";
+import { useInView } from "react-intersection-observer";
 
-export default function GalleryList({ Gallerys }: { Gallerys: GalleryDocument[] }) {
+export default function GalleryList({
+  Gallerys,
+  pagination,
+}: {
+  Gallerys: GalleryDocument[];
+  pagination: {
+    totalCount: number;
+    currentPage: number;
+    limit: number;
+    totalPages: number;
+  };
+}) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState<{ name?: string; image?: File }>({});
   const [tableLoading, setTableLoading] = useState(false);
   const [confirmModalId, setConfirmModalId] = useState<string | null>(null);
   const router = useRouter();
+  const [gallerys, setGallerys] = useState<GalleryDocument[]>([]);
+  useEffect(() => {
+    setGallerys(Gallerys);
+  }, [Gallerys]);
+
+  const [page, setPage] = useState(1);
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+  });
+
+  const loadMore = async () => {
+    if (pagination.totalPages <= page) {
+      return;
+    }
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // optional delay
+      const nextPage = page + 1;
+      const newGallerys = await getAllGallery(nextPage);
+      if (newGallerys?.success) {
+        setGallerys((prev) => [...prev, ...newGallerys.data]);
+        setPage(nextPage);
+      }
+    } catch (error) {
+      console.error("Failed to load more FAQs", error);
+    }
+  };
+
+  useEffect(() => {
+    if (inView) {
+      loadMore();
+    }
+  }, [inView]);
 
   const handleEdit = async (id: string, data: typeof formData) => {
     if (!data.name && !data.image) return;
@@ -68,7 +112,7 @@ export default function GalleryList({ Gallerys }: { Gallerys: GalleryDocument[] 
             </tr>
           </thead>
           <tbody>
-            {Gallerys.map((item: GalleryDocument) => (
+            {gallerys.map((item: GalleryDocument) => (
               <tr
                 key={item.galleryId}
                 className="bg-white border-b border-defined-brown last:border-transparent"
@@ -126,7 +170,7 @@ export default function GalleryList({ Gallerys }: { Gallerys: GalleryDocument[] 
                       alt="gallery"
                       width={100}
                       height={100}
-                      className="rounded w-[8rem] object-cover"
+                      className="rounded w-[8rem] h-full object-cover"
                     />
                   )}
                 </td>
@@ -204,6 +248,17 @@ export default function GalleryList({ Gallerys }: { Gallerys: GalleryDocument[] 
               </button>
             </div>
           </div>
+        </div>
+      )}
+      {pagination.totalPages <= page ? null : (
+        <div className="flex justify-center items-center gap-4" ref={ref}>
+          {/* spinner */}
+          <span className="animate-pulse text-2xl font-bold">Loading...</span>
+          <div
+            className="size-9 inline-block rounded-full border-6 border-r-defined-purple border-solid animate-spin border-white"
+            role="status"
+            aria-label="Loading"
+          ></div>
         </div>
       )}
     </>

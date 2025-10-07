@@ -77,7 +77,7 @@ export async function deleteExistingGallery(galleryId: string) {
 
 export async function getAllGallery(
   page: number | string = 1,
-  limit: number | string = 10,
+  limit: number | string = 5,
   sort: string = "createdAt",
   order: "asc" | "desc" = "desc",
   status?: boolean
