@@ -15,10 +15,8 @@ const FormCard = () => {
     
         if (
           !form.name ||
-          !form.mobile ||
-          !form.location ||
-          !form.class ||
-          !form.message
+          !form.mobile ||          
+          !form.class          
         ) {
           toast.error("Please fill all the fields");
           return;
@@ -60,7 +58,7 @@ const FormCard = () => {
       };
   return (
     <section>
-      <div className="flex flex-col md:flex-row items-stretch justify-center gap-6 p-6 max-w-[1400px] mx-auto">
+      <div className="flex flex-col md:flex-row items-stretch justify-center gap-6">
         {/* Left Form Section (40%) */}
         <div className="w-full md:w-[40%] bg-gradient-to-b from-[#f3f6ff] to-white p-8 rounded-2xl shadow-md flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6">

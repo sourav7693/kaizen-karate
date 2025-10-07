@@ -153,7 +153,10 @@ const Header = () => {
           ))}
         </ul>
         {/* Desktop button */}
-        <button onClick={toggleAppointmentModal} className="hidden lg:block rounded-3xl text-white bg-defined-purple h-[2.5rem] px-4">
+        <button
+          onClick={toggleAppointmentModal}
+          className="hidden lg:block rounded-3xl text-white bg-defined-purple h-[2.5rem] px-4"
+        >
           Admission Today
         </button>
 
@@ -192,7 +195,7 @@ const Header = () => {
         </button>
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className=" absolute top-full w-full left-0 text-white font-bold bg-defined-purple lg:hidden p-6 pb-12 rounded-b-lg h-fit overflow-y-scroll">
+          <div className=" absolute top-full w-full left-0 text-white font-bold bg-defined-purple/70 backdrop-blur-2xl lg:hidden p-6 pb-12 h-fit overflow-y-scroll">
             <ul className="flex flex-col gap-4 capitalize">
               {NavLinksData.map((item, index) => (
                 <li key={index} className="relative">
@@ -295,6 +298,12 @@ const Header = () => {
                   )}
                 </li>
               ))}
+              <button
+                onClick={toggleAppointmentModal}
+                className="rounded-3xl text-defined-purple bg-defined-yellow h-[2.5rem] px-4"
+              >
+                Admission Today
+              </button>
             </ul>
           </div>
         )}

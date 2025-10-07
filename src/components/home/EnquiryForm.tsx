@@ -15,10 +15,8 @@ const EnquiryForm = () => {
   
       if (
         !form.name ||
-        !form.mobile ||
-        !form.location ||
-        !form.class ||
-        !form.message
+        !form.mobile ||        
+        !form.class        
       ) {
         toast.error("Please fill all the fields");
         return;
