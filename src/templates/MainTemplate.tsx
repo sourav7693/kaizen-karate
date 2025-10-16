@@ -15,7 +15,7 @@ export default function MainTemplate({
       </div>
 
       {/* Main Content */}
-      <div className=" lg:mt-[5rem] md:mt-[5rem] mt-[2rem]">{children}</div>
+      <div className="md:mt-[1rem] mt-[2rem]">{children}</div>
       <OnlyMobile />
       <Footer />
     </div>

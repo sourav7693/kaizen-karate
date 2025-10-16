@@ -24,6 +24,35 @@ const Header = () => {
     {
       text: "About Us",
       href: "/about",
+      
+    },
+    {
+      text: "Our Classes",
+      href: "/classes",
+    },
+    
+    {
+      text: "Media",
+      // href: "/",
+      subMenu: [
+         {
+          text: "Gallery",
+          href: "/gallery",
+        },
+         {
+          text: "Video",
+          href: "/video",
+        },
+        {
+          text: "Awards",
+          href: "/awards",
+        }
+      ]
+    },
+
+    {
+      text: "Member",
+      // href: "/",
       subMenu: [
         {
           text: "Board Comittee",
@@ -35,29 +64,14 @@ const Header = () => {
         },
       ]
     },
-    {
-      text: "Our Classes",
-      href: "/classes",
-    },
-    {
-      text: "Media",
-      href: "/media",
-      subMenu: [
-        {
-          text: "Awards",
-          href: "/awards",
-        }
-      ]
-    },
+    
     {
       text: "Contact Us",
       href: "/contact",
     },
   ];
 
-   const isActive = (path: string | undefined) => {
-     return pathname === path;
-   };
+   const isActive = (path: string | undefined) => pathname === path
 
   useEffect(() => {
     let ticking = false;
@@ -78,7 +92,7 @@ const Header = () => {
     <>
       <div
         className={`flex justify-between items-center md:px-18 px-4 fixed h-[3.5rem] md:h-[5rem] w-full z-[60] bg-white shadow-defined-light ${
-          scrolled ? "top-0 " : "md:top-[3rem] top-0"
+          scrolled ? "top-0 " : "md:top-[9rem] top-0"
         }`}
       >
         {/* Logo */}
@@ -102,7 +116,7 @@ const Header = () => {
               className="font-medium text-lg hover:scale-110 transition-all duration-500"
             >
               {item.href ? (
-                <div className="relative group">
+                <div className="relative">
                   <Link
                     href={item.href}
                     className={`${
@@ -111,6 +125,18 @@ const Header = () => {
                   >
                     {item.text}
                   </Link>
+                </div>
+              ) : (
+                <div className="relative group">
+                  <span
+                    className={`${
+                      isActive(item.href)
+                        ? "text-defined-purple"
+                        : "text-defined-purple"
+                    } capitalize cursor-pointer`}
+                  >
+                    {item.text}
+                  </span>
                   {item.subMenu && item.subMenu.length > 0 && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 duration-500 transition-all origin-top-right opacity-0 group-hover:opacity-90 group-hover:border-t-2 group-hover:border-defined-yellow w-0 group-hover:w-auto  overflow-hidden flex rounded bg-white">
                       <div className="flex flex-col gap-6 ">
@@ -135,18 +161,6 @@ const Header = () => {
                       </div>
                     </div>
                   )}
-                </div>
-              ) : (
-                <div className="relative">
-                  <span
-                    className={`${
-                      isActive(item.href)
-                        ? "text-defined-purple"
-                        : "text-defined-blue"
-                    } font-semibold capitalize cursor-pointer`}
-                  >
-                    {item.text}
-                  </span>
                 </div>
               )}
             </li>
@@ -203,57 +217,18 @@ const Header = () => {
                     <div>
                       <Link
                         href={item.href}
-                        className="flex justify-between items-center cursor-pointer lg:text-base text-base md:text-xl xl:text-lg"
-                        onClick={() =>
-                          item.subMenu &&
-                          item.subMenu.length > 0 &&
-                          setOpenDropdown(openDropdown === index ? null : index)
-                        }
+                        className="flex justify-between items-center cursor-pointer lg:text-base text-base md:text-xl xl:text-lg"                        
                       >
                         {item.text}
-                        {item.subMenu && item.subMenu.length > 0 && (
-                          <span>{openDropdown === index ? "-" : "+"}</span>
-                        )}
-                      </Link>
-                      {openDropdown === index && (
-                        <div
-                          className={`duration-500 transition-all origin-top ${
-                            openDropdown === index
-                              ? "h-auto opacity-100"
-                              : "h-0 opacity-0"
-                          } overflow-hidden flex flex-col rounded`}
-                        >
-                          {item.subMenu && item.subMenu.length > 0 && (
-                            <ul className="flex flex-col ">
-                              {item.subMenu.map(
-                                (
-                                  item: { href: string; text: string },
-                                  index: number
-                                ) => (
-                                  <div
-                                    className="flex flex-col p-2 "
-                                    key={index}
-                                  >
-                                    <Link
-                                      href={item.href}
-                                      className="flex items-center gap-2 font-medium text-white px-4 rounded hover:scale-105 transition-all duration-300"
-                                    >
-                                      <span className="">&gt;</span>
-                                      {item.text}
-                                    </Link>
-                                  </div>
-                                )
-                              )}
-                            </ul>
-                          )}
-                        </div>
-                      )}
+                      </Link>                      
                     </div>
                   ) : (
                     <div>
                       <div
                         className="flex justify-between items-center cursor-pointer lg:text-base text-base md:text-xl xl:text-lg"
                         onClick={() =>
+                          item.subMenu &&
+                          item.subMenu.length > 0 &&
                           setOpenDropdown(openDropdown === index ? null : index)
                         }
                       >

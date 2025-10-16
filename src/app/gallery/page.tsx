@@ -10,7 +10,8 @@ const page = async () => {
   const gallery = await getAllGallery(1,0);
   return (
     <MainTemplate>
-      <SubBanner heading="Media" />
+      <SubBanner heading="Gallery" />
+
       {/* Your Work here  */}
       <section className="self-padding">
         <div className="border-b border-defined-purple pb-8 flex flex-col gap-6">
@@ -31,12 +32,9 @@ const page = async () => {
             ))}
           </div>
         </div>
-        <div className="pb-8 flex flex-col gap-6">
-          {/* Video Gallery */}
-          <h1 className="text-3xl font-bold text-defined-purple">
-            Video Gallery
-          </h1>
-        </div>
+
+
+       
       </section>
     </MainTemplate>
   );
