@@ -1,72 +1,86 @@
-"use client"
-import { useState } from 'react'
-import toast from 'react-hot-toast';
+"use client";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const FormCard = () => {
-     const [form, setForm] = useState({
-        name: "",
-        mobile: "",
-        location: "",
-        class: "",
-        message: "",
-      });
-      const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-    
-        if (
-          !form.name ||
-          !form.mobile ||          
-          !form.class          
-        ) {
-          toast.error("Please fill all the fields");
-          return;
-        }
-    
-        if (form.mobile.length !== 10) {
-          toast.error("Please enter a valid mobile number");
-          return;
-        }
-    
-        const dest = "+919832480087";
-        let message = `*Name:* ${form.name}
-       *Phone:* ${form.mobile}
-       *Location: * ${form.location}
-       *Class: * ${form.class}   
-       *Message:* ${form.message}
-         `;
-        message = encodeURIComponent(message);
-        // Check if user is on mobile
-        const isMobile = /iPhone|Android|iPad|iPod/i.test(navigator.userAgent);
-        const baseUrl = isMobile
-          ? "https://api.whatsapp.com/send"
-          : "https://web.whatsapp.com/send";
-    
-        const url = `${baseUrl}?phone=${dest}&text=${message}`;
-    
-        try {
-          const newWindow = window.open(url, "_blank");
-          if (newWindow) {
-            newWindow.focus();
-          } else {
-            toast.error(
-              "Failed to open the link. Please check your browser settings."
-            );
-          }
-        } catch (error) {
-          console.error("Error opening new window:", error);
-        }
-      };
+  const [form, setForm] = useState({
+    name: "",
+    mobile: "",
+    location: "",
+    class: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!form.name || !form.mobile || !form.class) {
+      toast.error("Please fill all the required fields");
+      return;
+    }
+
+    if (form.mobile.length !== 10) {
+      toast.error("Please enter a valid mobile number");
+      return;
+    }
+
+    const dest = "+919832480087";
+    let message = `*Name:* ${form.name}
+*Phone:* ${form.mobile}
+*Location:* ${form.location}
+*Class:* ${form.class}
+*Message:* ${form.message}`;
+    message = encodeURIComponent(message);
+
+    const isMobile = /iPhone|Android|iPad|iPod/i.test(navigator.userAgent);
+    const baseUrl = isMobile
+      ? "https://api.whatsapp.com/send"
+      : "https://web.whatsapp.com/send";
+
+    const url = `${baseUrl}?phone=${dest}&text=${message}`;
+
+    try {
+      const newWindow = window.open(url, "_blank");
+      if (newWindow) newWindow.focus();
+      else toast.error("Failed to open WhatsApp link");
+    } catch (error) {
+      console.error("Error opening new window:", error);
+    }
+  };
+
+  const locations = [
+    {
+      name: "Punjabi Para",
+      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.617996808444!2d88.42971107543298!3d26.72464817675975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4416766abb097%3A0xb5110a2096f10a73!2sKAIZEN%20KARATE-DO%20ASSOCIATION%20INDIA!5e0!3m2!1sen!2sin!4v1759733671418!5m2!1sen!2sin",
+    },
+    {
+      name: "Pradhan Nagar Nabankur Club",
+      src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7126.645239001342!2d88.417101!3d26.734079!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e44123e8da7ded%3A0xa033863d2e705f1c!2sNabankur%20Sangha!5e0!3m2!1sen!2sin!4v1760682087148!5m2!1sen!2sin",
+    },
+    {
+      name: "Uttaryan(City Center)",
+      src: "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d7126.562036467285!2d88.395435!3d26.735407000000002!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDQ0JzA3LjUiTiA4OMKwMjMnNDMuNiJF!5e0!3m2!1sen!2sin!4v1760682189611!5m2!1sen!2sin",
+    },
+    {
+      name: "Jyotinagar Eden Sports",
+      src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7126.073206933894!2d88.440703!3d26.743208!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4410a10260411%3A0x87aaa26e302a85f4!2sEden%20Sports%20Arena!5e0!3m2!1sen!2sin!4v1760682242057!5m2!1sen!2sin",
+    },
+  ];
+
   return (
-    <section>
+    <section className="max-w-[1440px] mx-auto  py-10">
       <div className="flex flex-col md:flex-row items-stretch justify-center gap-6">
-        {/* Left Form Section (40%) */}
+        {/* Left Form Section */}
         <div className="w-full md:w-[40%] bg-gradient-to-b from-[#f3f6ff] to-white p-8 rounded-2xl shadow-md flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6">
             Get Your Free Moving{" "}
-            <span className="text-defined-purple">Quote Today!</span>
+            <span className="text-[#28156F]">Quote Today!</span>
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col justify-center">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 flex-1 flex flex-col justify-center"
+          >
             <input
               type="text"
               name="name"
@@ -76,12 +90,16 @@ const FormCard = () => {
             />
             <input
               type="number"
-                name="mobile"
-                onChange={(e) => setForm({ ...form, mobile: e.target.value })}
+              name="mobile"
+              onChange={(e) => setForm({ ...form, mobile: e.target.value })}
               placeholder="Mobile Number"
               className="w-full p-3 rounded-md border border-gray-300 outline-none"
             />
-            <select name="class" onChange={(e) => setForm({ ...form, class: e.target.value })} className="w-full p-3 rounded-md border border-gray-300 outline-none">
+            <select
+              name="class"
+              onChange={(e) => setForm({ ...form, class: e.target.value })}
+              className="w-full p-3 rounded-md border border-gray-300 outline-none"
+            >
               <option value="">Choose Class</option>
               <option value="Traditonal Karate">Traditonal Karate</option>
               <option value="Sports Karate">Sports Karate</option>
@@ -91,15 +109,15 @@ const FormCard = () => {
             </select>
             <input
               type="text"
-                name="location"
-                onChange={(e) => setForm({ ...form, location: e.target.value })}
+              name="location"
+              onChange={(e) => setForm({ ...form, location: e.target.value })}
               placeholder="Location"
               className="w-full p-3 rounded-md border border-gray-300 outline-none"
             />
             <textarea
               placeholder="Message"
-                name="message"
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
+              name="message"
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
               rows={4}
               className="w-full p-3 rounded-md border border-gray-300 outline-none"
             ></textarea>
@@ -113,17 +131,31 @@ const FormCard = () => {
           </form>
         </div>
 
-        <div className="w-full md:w-[60%] rounded-2xl overflow-hidden shadow-md flex">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.617996808444!2d88.42971107543298!3d26.72464817675975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4416766abb097%3A0xb5110a2096f10a73!2sKAIZEN%20KARATE-DO%20ASSOCIATION%20INDIA!5e0!3m2!1sen!2sin!4v1759733671418!5m2!1sen!2sin"
-            loading="lazy"
-            allowFullScreen
-            className="w-full h-full border-0"
-          ></iframe>
+        {/* Right Map Section */}
+        <div className="w-full md:w-[60%] rounded-2xl overflow-hidden shadow-md bg-white p-4 flex flex-col">
+          {/* ✅ Full-height 2x2 map grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
+            {locations.map((loc, i) => (
+              <div
+                key={i}
+                className="rounded-xl overflow-hidden border border-gray-200 shadow-sm flex flex-col"
+              >
+                <div className="bg-defined-yellow text-center py-3 font-medium text-defined-purple">
+                  {loc.name}
+                </div>
+                <iframe
+                  src={loc.src}
+                  loading="lazy"
+                  allowFullScreen
+                  className="w-full h-full min-h-[250px] md:min-h-[280px] flex-1 border-0"
+                ></iframe>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
 
-export default FormCard
+export default FormCard;

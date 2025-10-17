@@ -14,7 +14,7 @@ const page = async () => {
 
       {/* Your Work here  */}
       <section className="self-padding">
-        <div className="border-b border-defined-purple pb-8 flex flex-col gap-6">
+        <div className="pb-8 flex flex-col gap-6">
           <h1 className="text-3xl font-bold text-defined-purple">
             Image Gallery
           </h1>

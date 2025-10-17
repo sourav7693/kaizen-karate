@@ -108,12 +108,7 @@ const Footer = () => {
                 </span>
               </Link>
             </div>
-          </div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.617996808444!2d88.42971107543298!3d26.72464817675975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4416766abb097%3A0xb5110a2096f10a73!2sKAIZEN%20KARATE-DO%20ASSOCIATION%20INDIA!5e0!3m2!1sen!2sin!4v1759733671418!5m2!1sen!2sin"
-            loading="lazy"
-            className="w-full h-[14rem] rounded-xl"
-          ></iframe>
+          </div>          
         </div>
       </div>
 

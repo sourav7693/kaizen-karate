@@ -24,47 +24,44 @@ const Header = () => {
     {
       text: "About Us",
       href: "/about",
-      
     },
     {
       text: "Our Classes",
       href: "/classes",
     },
-    
+
     {
       text: "Media",
-      // href: "/",
       subMenu: [
-         {
+        {
           text: "Gallery",
           href: "/gallery",
         },
-         {
+        {
           text: "Video",
           href: "/video",
         },
         {
           text: "Awards",
           href: "/awards",
-        }
-      ]
+        },
+      ],
     },
 
     {
       text: "Member",
-      // href: "/",
       subMenu: [
         {
-          text: "Board Comittee",
-          href: "/board-comittee",
+          text: "Executive Committee",
+          href: "/executive-committee",
         },
         {
           text: "District Incharge",
           href: "/district-incharge",
         },
-      ]
+      ],
     },
-    
+
     {
       text: "Contact Us",
       href: "/contact",
@@ -92,7 +89,7 @@ const Header = () => {
     <>
       <div
         className={`flex justify-between items-center md:px-18 px-4 fixed h-[3.5rem] md:h-[5rem] w-full z-[60] bg-white shadow-defined-light ${
-          scrolled ? "top-0 " : "md:top-[9rem] top-0"
+          scrolled ? "top-0 " : "md:top-[7rem] top-0"
         }`}
       >
         {/* Logo */}

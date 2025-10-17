@@ -25,11 +25,23 @@ const page = () => {
         },
         {
           icon: <FaLocationDot />,
-          title: `Visit Our Location`,
+          title: `Training Centers`,
           details: [
             {
-              text: `Udham Singh Sarani Rd, Ward 13, Punjabi Para, Siliguri, West Bengal 734001`,
-              href: `https://maps.app.goo.gl/Pbj2JBNZgaLjd7Fh9`,
+              text: `Punjabi Para`,
+              href: `https://maps.app.goo.gl/1LJwDa5BuTdcnBtu9`,
+            },
+            {
+              text: `Pradhan Nagar Nabankur Club`,
+              href: `https://maps.app.goo.gl/avgtoi4iRd57aent7`,
+            },
+            {
+              text: `Uttaryan(City Center)`,
+              href: `https://maps.app.goo.gl/NPxtvjU8sNvQi1Xr6`,
+            },
+            {
+              text: `Jyotinagar Eden Sports`,
+              href: `https://maps.app.goo.gl/KCVQ2pu8bxTgKm8S8`,
             },
           ],
         },
